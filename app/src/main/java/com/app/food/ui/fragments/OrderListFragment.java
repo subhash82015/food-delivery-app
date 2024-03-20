@@ -109,7 +109,11 @@ public class OrderListFragment extends Fragment implements OrderPlace {
         sharedPreferenceUtil = SharedPreferenceUtil.getInstance(getActivity());
 
         customProgressDialog = new CustomProgressDialog(getActivity(), "Please wait....");
-        getOrderList();
+        if (sharedPreferenceUtil.getUserType() == 1) {
+            getOrderListAdmin();
+        } else {
+            getOrderList();
+        }
     }
 
     private void getOrderList() {
@@ -120,6 +124,7 @@ public class OrderListFragment extends Fragment implements OrderPlace {
 
         collectionRef.get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
+                    customProgressDialog.dismiss();
                     for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                         customProgressDialog.dismiss();
                         if (documentSnapshot.exists()) {
@@ -136,6 +141,33 @@ public class OrderListFragment extends Fragment implements OrderPlace {
                 });
 
     }
+
+    private void getOrderListAdmin() {
+        modelList.clear();
+        customProgressDialog.show();
+        Query collectionRef = firebaseFirestore.collection(Constants.ORDER_COLLECTION_NAME); // Replace with your collection name
+        // CollectionReference collectionRef = firebaseFirestore.collection(Constants.ORDER_COLLECTION_NAME).whereEqualTo("userid",sharedPreferenceUtil.getUserId());
+
+        collectionRef.get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    customProgressDialog.dismiss();
+                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                        customProgressDialog.dismiss();
+                        if (documentSnapshot.exists()) {
+                            AddOrder model = documentSnapshot.toObject(AddOrder.class);
+                            modelList.add(model);
+                            setAdapter1();
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    customProgressDialog.dismiss();
+                    // Handle any errors that occur while fetching documents
+                    Tools.logs(TAG, "Error getting documents: " + e);
+                });
+
+    }
+
 
     private void setAdapter1() {
         if (modelList != null && modelList.size() > 0) {
@@ -191,7 +223,7 @@ public class OrderListFragment extends Fragment implements OrderPlace {
         DocumentReference docRef = firebaseFirestore.collection(Constants.ORDER_COLLECTION_NAME).document(addOrder.getDoc_id());
 
         Map<String, Object> updates = new HashMap<>();
-        updates.put("status",status);
+        updates.put("status", status);
 
 
         docRef.update(updates)
