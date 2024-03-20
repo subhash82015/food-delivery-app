@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "451574316363",
-    "project_id": "vocabulary-building-app-86d34",
-    "storage_bucket": "vocabulary-building-app-86d34.appspot.com"
+    "project_number": "766825941057",
+    "project_id": "food-delivery-app-b842a",
+    "storage_bucket": "food-delivery-app-b842a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:451574316363:android:98859234d82996cb18bcce",
+        "mobilesdk_app_id": "1:766825941057:android:9291c9b4adb8c91d9a5ec0",
         "android_client_info": {
-          "package_name": "com.app.vocabulary"
+          "package_name": "com.app.food"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCYbjxlpgxoP743bJYp5mET6Pl3J0IWZxo"
+          "current_key": "AIzaSyBa_oq01FL9acpSyOy-d_Y3gyQEPSTtlr8"
         }
       ],
       "services": {

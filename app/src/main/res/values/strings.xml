@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Vocabulary Building</string>
+    <string name="app_name">HungryGo</string>
 
     <!-- Login-->
     <string name="login_head">Login</string>

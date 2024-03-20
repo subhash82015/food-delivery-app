@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace 'com.app.vocabulary'
+    namespace 'com.app.food'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.app.vocabulary"
+        applicationId "com.app.food"
         minSdk 24
         targetSdk 34
         versionCode 1

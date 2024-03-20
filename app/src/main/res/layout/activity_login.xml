@@ -15,7 +15,7 @@
         <LinearLayout
             android:id="@+id/lnTop"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_250sdp"
+            android:layout_height="@dimen/_230sdp"
             android:background="@drawable/login_top_border"
             android:orientation="horizontal">
 
@@ -61,6 +61,7 @@
                         android:layout_height="@dimen/_100sdp"
                         android:layout_gravity="center"
                         android:gravity="center"
+                        android:visibility="gone"
                         android:src="@drawable/logo" />
 
 

@@ -36,4 +36,11 @@
         <item>UPI</item>
         <item>Cash</item>
     </array>
+
+    <array name="order_status">
+        <item>Accepted</item>
+        <item>Preparing</item>
+        <item>On the way</item>
+        <item>Delivered</item>
+    </array>
 </resources>
