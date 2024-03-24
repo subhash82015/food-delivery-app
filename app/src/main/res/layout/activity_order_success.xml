@@ -11,6 +11,7 @@
     tools:context=".ui.activity.OrderSuccessActivity">
 
     <TextView
+        android:id="@+id/tvOrderDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Order has been placed"

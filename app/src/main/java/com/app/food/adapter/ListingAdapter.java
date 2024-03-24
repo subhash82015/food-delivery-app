@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,8 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.app.food.R;
 import com.app.food.databinding.ListingItemsBinding;
 import com.app.food.models.ListingResponse;
+import com.app.food.ui.activity.LoginActivity;
 import com.app.food.ui.activity.OrderSuccessActivity;
 import com.app.food.utils.OrderPlace;
+import com.app.food.utils.Tools;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -93,6 +96,7 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         TextView tvMinus = bottomPopupView.findViewById(R.id.tvMinus);
         TextView tvCount = bottomPopupView.findViewById(R.id.tvCount);
         TextView tvPlus = bottomPopupView.findViewById(R.id.tvPlus);
+        EditText etAddress = bottomPopupView.findViewById(R.id.etAddress);
         ImageView ivThumNail = bottomPopupView.findViewById(R.id.ivThumNail);
         Button btnOrderNow = bottomPopupView.findViewById(R.id.btnOrderNow);
 
@@ -130,7 +134,11 @@ public class ListingAdapter extends RecyclerView.Adapter<ListingAdapter.ViewHold
         btnOrderNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                orderPlace.onItemClick(listingResponse, tot_amount, count);
+                if (etAddress.getText().toString().equals("")) {
+                    Tools.showToast(context, "Please fill adrress");
+                } else {
+                    orderPlace.onItemClick(listingResponse, tot_amount, count);
+                }
 
             }
         });

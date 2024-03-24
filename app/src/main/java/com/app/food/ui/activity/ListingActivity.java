@@ -109,6 +109,7 @@ public class ListingActivity extends AppCompatActivity implements OrderPlace {
                 // User information added successfully
                 Tools.logs(TAG, "User Order Placed successfully");
                 Intent mainIntent = new Intent(ListingActivity.this, OrderSuccessActivity.class);
+                mainIntent.putExtra(Constants.OWNER_NAME,listingResponse.getOwner_name());
                 mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(mainIntent);
                 // Tools.showToast(ListingActivity.this, "User Order Placed successfully");
